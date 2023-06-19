@@ -24,7 +24,7 @@ const fruits = 90.2345;
     console.log("4. Вартість всіх товарі без копійок:", roundPrice);
  
 // 5. Виведіть суму товарів округлену до сотень. (Наприклад якщо вийшло 260, то виведіть 300)
-    let roundHundredPrice = Math.round(roundPrice/100)*100;
+    let roundHundredPrice = Math.round(roundPrice/100);
     console.log("5. Cума товарів округлену до сотень:", roundHundredPrice);
 
 
