@@ -189,8 +189,6 @@ console.log(sum(1, 2, -3, 4, 15, -6, 70, -8, 9)) // 84
 }
 console.log(sum(1, 2, 3, 4)) // 10 */
 
-
-
 //Минимальное значение
 /* function min(... args) {
   let minValue; // по умолчанию это значение не объявлено
@@ -230,7 +228,7 @@ console.log(min(1, 2, -3, 4, 15, -6, 70, -8, 9)) // -8 */
 
 console.log(max(1, 2, 0, 4, 15, 9)); //15 */
 
-// сокращеный вариант 
+// сокращеный вариант
 /* function max(...args) {
   return Math.max(...args);
 }
@@ -273,7 +271,6 @@ console.log(minOrMax(undefined, 1, 2, 0, 4, -15, 9)); // -15 - первым зн
 }
 console.log(minOrMax(undefined, 'Some error', 1, 2, 0, 4, -15, 9)) // undefined */
 
-
 /* function minOrMax(operator, errorMessage = 'Unknown operator', firstNumber, ...args) {
   console.log(firstNumber); // -100
   if (operator === 'min') {
@@ -285,7 +282,6 @@ console.log(minOrMax(undefined, 'Some error', 1, 2, 0, 4, -15, 9)) // undefined 
   }
 }
 console.log(minOrMax('min', 'Some error', -100, 2, 0, 4, -15, 9)) // -100 */
-
 
 /* const b = 10;
 {
@@ -322,7 +318,6 @@ var b = 10;
 function minOrMax (){
 }  */
 
-
 /* // C функциями переменные работают также, сначало ищет внутри блока и выводит
 var b = 10;
 function minOrMax (){
@@ -347,13 +342,11 @@ function minOrMax (){
 }
 minOrMax(); */
 
-
 /* function minOrMax (){
   console.log(b)
 }
 minOrMax(); 
-let b = 10; // Uncaught ReferenceError: Cannot access 'b' before initialization at minOrMax - т.к зоть и функция объявлено, но вызываем ее раньше, чем нашу переменную */
-
+let b = 10; // Uncaught ReferenceError: Cannot access 'b' before initialization at minOrMax - т.к хоть и функция объявлено, но вызываем ее раньше, чем нашу переменную */
 
 /* function minOrMax (){
   console.log(b); // undefined - т.к переменная обьявлена, но не назначена let b
@@ -362,13 +355,11 @@ let b;
 minOrMax(); 
 b = 10;  */
 
-
 /* function minOrMax (){
   console.log(b); //script-adv3.js:367 Uncaught ReferenceError: Cannot access 'b' before initialization at minOrMax - т.к в этот момент такой переменой еще не существует и он незнает где взять undefined
 }
 minOrMax(); 
 let b = 10;  */
-
 
 /* function minOrMax (){
   console.log(b); //script-adv3.js:367 Uncaught ReferenceError: Cannot access 'b' before initialization at minOrMax - т.к в этот момент такой переменой еще не существует и он незнает где взять undefined
@@ -379,7 +370,6 @@ minOrMax(); // undefined
 b = 10;
 
 minOrMax(); // 10 */
-
 
 /* function minOrMax (){
   let b = 10;
@@ -405,12 +395,11 @@ console.log(minOrMax('min', 12, 123, 4, -2)); // -2
 console.log(minOrMax('min', 12, 123, 4, -2, 2, 1, 3, 45, 56, -100)); // -100
 console.log(minOrMax('max', 231, 321, 31, 41, 1000)) // 1000 */
 
-
-function minOrMax(number){
+/* function minOrMax(number){
   const element = String(number).split('')
   const value;
   for(let i = 0; 0<element.length; i++){
     Number
   }
   return
-}
+} */
