@@ -74,8 +74,9 @@ console.log("3. Оцінка студенту", studentGrade(studentEvaluate));
 
 pairsAssessment = [];
 const pairsGrade = function evaluatPair(){
+  randomAssessment = (Math.floor(Math.random() * 5) + 1);
   for (let i = 0; i < studentThemes.length; i++) {
-    pairsAssessment.push([studentThemes[i], (Math.floor(Math.random() * 5) + 1)]);
+    pairsAssessment.push([studentThemes[i].join(", "), (Math.floor(Math.random() * 5) + 1)]);
   }
   return pairsAssessment;
 };
