@@ -56,7 +56,10 @@ const projectGroup = function addThemes() {
   }
   return studentThemes;
 };
-console.log("2. Теми проєктів, над якими студенти будуть працювати", projectGroup(studentThemes));
+console.log(
+  "2. Теми проєктів, над якими студенти будуть працювати",
+  projectGroup(studentThemes)
+);
 
 //3. Зіставте оцінки(marks) зі студентом(students): [["Саша", 4], [...], [...]]
 studentEvaluate = [];
@@ -73,15 +76,20 @@ console.log("3. Оцінка студенту", studentGrade(studentEvaluate));
 [["Олександр і Олена", "Теорія автоматів", 5], [...], [...]] */
 
 pairsAssessment = [];
-const pairsGrade = function evaluatPair(){
-  randomAssessment = (Math.floor(Math.random() * 5) + 1);
+const pairsGrade = function evaluatPair() {
+  randomAssessment = Math.floor(Math.random() * 5) + 1;
   for (let i = 0; i < studentThemes.length; i++) {
-    pairsAssessment.push([studentThemes[i].join(", "), (Math.floor(Math.random() * 5) + 1)]);
+    pairsAssessment.push([
+      studentThemes[i].join(", "),
+      Math.floor(Math.random() * 5) + 1,
+    ]);
   }
   return pairsAssessment;
 };
-console.log("4. Випадкову оцінку(від 1 до 5) за проєкт кожній парі", pairsGrade(pairsAssessment));
-
+console.log(
+  "4. Випадкову оцінку(від 1 до 5) за проєкт кожній парі",
+  pairsGrade(pairsAssessment)
+);
 
 // перебрать массив студентов через фор ич
 //создать функцию проверки мальчик или девочка и создать массив
@@ -96,9 +104,6 @@ console.log("4. Випадкову оцінку(від 1 до 5) за проєк
 // можно вырезать всех М и вставить в новый массив
 
 // проверить не меньше ли количество тем, чем пар и назнать паре тему рамдомно или последовательно
-
-
-
 
 /* числа.forEach(function(число) {
     console.log(число);
@@ -125,7 +130,6 @@ items.forEach(function(item){
 })
 
 console.log(copy); */
-
 
 /* for (i) {
     return.push([students[i], marks[i]])
