@@ -505,7 +505,7 @@ console.log(autoDrive)  // ƒ drive() {
 const autoDrive = auto.drive.bind(auto); // говорим JS  создай новую функцию autoDrive и когда она будет вызываться значение this внутри нашей функции будет = тому., что я передаю внутри метода .bind, т.е (auto)
 //const motorDrive = auto.drive.bind({ brand: "Корабль" }); */
 
-const auto = {
+/* const auto = {
   brand: "BMW",
   drive() {
     console.log(this)
@@ -515,7 +515,7 @@ const auto = {
 
 const motorBike = {
   brand: "Suzuki"
-}
+} */
 
 // const autoDrive = auto.drive.bind(auto);
 // const motorDrive = auto.drive.bind(motorBike); // Заведем наш Suzuki
@@ -531,3 +531,65 @@ const header = $('h2')
 console.log($);
  */
 
+/* var animals = [
+    { species: 'Лев', name: 'Король' },
+    { species: 'Кит', name: 'Фэйл' }
+  ];
+  
+  for (var i = 0; i < animals.length; i++) {
+    (function(i) {
+      this.print = function() {
+        console.log('#' + i + ' ' + this.species
+                    + ': ' + this.name);
+      }
+      this.print();
+    }).call(animals[i], i);
+  } */
+
+/*   function Product(name, price) {
+    this.name = name;
+    this.price = price;
+  
+    if (price < 0) {
+      throw RangeError('Нельзя создать продукт ' +
+                        this.name + ' с отрицательной ценой');
+    }
+  }
+  
+  function Food(name, price) {
+    Product.call(this, name, price);
+    this.category = 'еда';
+  }
+  
+  Food.prototype = Object.create(Product.prototype);
+  
+  function Toy(name, price) {
+    Product.call(this, name, price);
+    this.category = 'игрушка';
+  }
+  
+  Toy.prototype = Object.create(Product.prototype);
+  
+  var cheese = new Food('фета', 5);
+  var fun = new Toy('робот', 40); */
+
+/* var person = {
+  fullName: function (city, country) {
+    return this.firstName + " " + this.lastName + "," + city + "," + country;
+  },
+};
+var person1 = {
+  firstName: "John",
+  lastName: "Doe",
+};
+console.log(person.fullName.call(person1, "Oslo", "Norway"));
+ */
+
+const person = {
+    firstName: 'Александр',
+    lastName: 'Мальцев',
+    age: 28,
+    getFullName: function() {
+      return `${this.firstName} ${this.lastName}`
+    }
+  }
