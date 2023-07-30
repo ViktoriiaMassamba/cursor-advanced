@@ -13,40 +13,45 @@ const randomArray = function getRandomArray() {
   }
   return myArray1;
 };
-console.log("1. Масив випадкових цілих чисел:", randomArray(myArray1));
+console.log("1. Масив випадкових цілих чисел:", randomArray());
 
 /*2. Створіть функцію getModa(...numbers) – яка вираховує моду всіх переданих в неї аргументів. НЕ ЦІЛІ ЧИСЛА ІГНОРУЮТЬСЯ
 Приклад: getModa(6, 2, 55, 11, 78, 2, 55, 77, 57, 87, 23, 2, 56, 3, 2) –> 2 */
 
-/* const moda = function getModa() {
-    const result = myArray1.filter();
-    for (let i = 0; i < myArray1.length; i++) {
-        myArray3.push(myArray1[i] > 0);}
-        count++;
-      }
-      return myArray3;
-
-console.log(moda());
-console.log(result()); */
-
-let myArray3 = {};
-
-let getModa = (elementArray, myArray, objOutput) => {
-  let buffs = [];
-
-  myArray.forEach((e) => {
-    if (e === elementArray) {
-      buffs.push(e);
-    }
-  });
-
-  objOutput[elementArray] = buffs.length;
-};
-[...myArray1].forEach((e) => {
-  getModa(e, myArray1, myArray3);
+/* let sortArray = myArray1.sort((a, b) => {
+  return a - b;
+  })
+  console.log(sortArray);  */
+let sortArray = myArray1.sort((a, b) => {
+  return a - b;
 });
 
-console.log("2. Мода всіх переданих в неї аргументів.", myArray3);
+function getModa(myArray1) {
+  let moda = [];
+  let myArray2 = [];
+  let count = 1;
+
+  //console.log(sortArray)
+
+  sortArray.forEach((item, i, myArray) => {
+    if (item === myArray[i + 1]) {
+      count++;
+    } else {
+      count = 1;
+    }
+    myArray2.push(count);
+    // console.log(myArray2);
+  });
+
+  const maxElementArray = Math.max(...myArray2);
+  myArray2.forEach((item, i) => {
+    if (item === maxElementArray) {
+      moda.push(sortArray[i]);
+    }
+  });
+  return moda;
+}
+console.log("2. Мода всіх переданих в неї аргументів.", getModa(randomArray));
 
 /*
 3. Створіть функцію getAverage(...numbers) – яка рахує середнє арифметичне всіх переданих в неї аргументів. НЕ ЦІЛІ ЧИСЛА ІГНОРУЮТЬСЯ
@@ -54,7 +59,7 @@ console.log("2. Мода всіх переданих в неї аргумент�
 
 // Number.isInteger
 
-const sum = myArray1
+/* const sum = myArray1
   .filter(function (myArray1) {
     return myArray1 >= 0;
   })
@@ -62,13 +67,26 @@ const sum = myArray1
     return accumuletor + myArray1;
   }); /* function averageValue (){
      return sum / myArray1.length;
-} */
+} 
 //console.log(sum);
 
 let averageValue = function () {
   return sum / myArray1.length;
 };
-console.log("3. Cереднє арифметичне:", averageValue().toFixed(2));
+console.log("3. Cереднє арифметичне:", averageValue().toFixed(2));*/
+
+const getAverage = (...myArray1) => {
+  const sum = myArray1
+    .filter(function (myArray1) {
+      return myArray1 >= 0;
+    })
+    .reduce(function (accumuletor, myArray1) {
+      return accumuletor + myArray1;
+    });
+  //console.log(sum, myArray1.length)
+  return sum / myArray1.length;
+};
+console.log("3. Cереднє арифметичне:", getAverage(...myArray1).toFixed(2));
 
 /*4. Створіть функцію getMedian(...numbers) – яка рахує медіану всіх переданих в неї аргументів. НЕ ЦІЛІ ЧИСЛА ІГНОРУЮТЬСЯ
 Приклад: getMedian(6, 2, 55, 11, 78, 2, 55, 77, 57, 87, 23, 2, 56, 3, 2) –> 23
@@ -100,8 +118,8 @@ console.log("5. Фільтрує парні числа - ", filterEvenNumbers);
 /* const countPositiveNumbers = myArray1.filter(function (myArray1) {
   return;
 });
-console.log("6. Кількість чисел більших - ", countPositiveNumbers);
- */
+console.log("6. Кількість чисел більших - ", countPositiveNumbers); */
+
 /*
 7. Створіть функцію getDividedByFive(...numbers) – яка відфільтрує усі елементи в масиві та залишить тільки ті, які діляться на ціло на 5
 Приклад: getDividedByFive(6, 2, 55, 11, 78, 2, 55, 77, 57, 87, 23, 2, 56, 3, 2) -> [55, 55] */
