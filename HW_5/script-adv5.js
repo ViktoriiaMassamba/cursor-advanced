@@ -18,18 +18,16 @@ console.log("1. Масив випадкових цілих чисел:", randomA
 /*2. Створіть функцію getModa(...numbers) – яка вираховує моду всіх переданих в неї аргументів. НЕ ЦІЛІ ЧИСЛА ІГНОРУЮТЬСЯ
 Приклад: getModa(6, 2, 55, 11, 78, 2, 55, 77, 57, 87, 23, 2, 56, 3, 2) –> 2 */
 
-/* let sortArray = myArray1.sort((a, b) => {
-  return a - b;
-  })
-  console.log(sortArray);  */
-let sortArray = myArray1.sort((a, b) => {
-  return a - b;
-});
+function getModa(...numbers) {
 
-function getModa(myArray1) {
   let moda = [];
   let myArray2 = [];
   let count = 1;
+
+  let sortArray = numbers.sort((a, b) => {
+    return a - b;
+  });
+  
 
   //console.log(sortArray)
 
@@ -40,7 +38,7 @@ function getModa(myArray1) {
       count = 1;
     }
     myArray2.push(count);
-    // console.log(myArray2);
+   //console.log(myArray2);
   });
 
   const maxElementArray = Math.max(...myArray2);
@@ -51,7 +49,8 @@ function getModa(myArray1) {
   });
   return moda;
 }
-console.log("2. Мода всіх переданих в неї аргументів.", getModa(randomArray));
+const numbers = [6, 2, 55, 11, 78, 2, 55, 77, 57, 87, 23, 56, 3, 2, 11, 11];
+console.log("2. Мода всіх переданих в неї аргументів.", getModa(...numbers));
 
 /*
 3. Створіть функцію getAverage(...numbers) – яка рахує середнє арифметичне всіх переданих в неї аргументів. НЕ ЦІЛІ ЧИСЛА ІГНОРУЮТЬСЯ
