@@ -1,7 +1,7 @@
 /* 1. Створити функцію getMaxDigit(number) – яка отримує будь-яке число та виводить найбільшу цифру в цьому числі. Приклади: 1236 -> 6, 987 -> 9, 385 -> 8*/
 
 let number = 23597024;
-console.log("1. Будь-яке число -", number);
+//console.log("1. Будь-яке число -", number);
 function getMaxDigit(n) {
   let counter = 0;
   n = n + "";
@@ -12,7 +12,11 @@ function getMaxDigit(n) {
   }
   return counter;
 }
-console.log("   Найбільша цифра -", getMaxDigit(number));
+console.log(
+  "1. Найбільша цифра -",
+  getMaxDigit(number),
+  "в числе" + " " + number
+);
 
 /*2. Створити функцію, яка визначає ступінь числа. Не використовуючи Math.pow та **. Використовуйте цикл */
 
@@ -38,12 +42,12 @@ console.log("3. Перша буква імені велика", upperlet());
 /* 4. Створити функцію, яка вираховує суму, що залишається після оплати податку від зарабітньої плати. (Податок = 18% + 1.5% -> 19.5%). Приклад: 1000 -> 805*/
 
 function netProfit(salary, tax) {
-  let payRoll = salary - tax;
+  let payRoll = salary - (salary * tax) / 100;
   return payRoll;
 }
 
-let index = netProfit(1000, 195);
-console.log("4. Cума, що залишається після оплати податкуо", index);
+let index = netProfit(1000, 19.5);
+console.log("4. Cума, що залишається після оплати податку", index);
 
 /*5. Створити функцію, яка повертає випадкове ціле число в діапазоні від N до M. Приклад: getRandomNumber(1, 10) -> 5 */
 
@@ -57,56 +61,66 @@ console.log("5. Випадкове ціле число", r);
 console.log(randInt(222, 333) + 100);  */
 
 /*6. Створити функцію, яка рахує скільки разів певна буква повторюється в слові. Приклад: countLetter("а", "Асталавіста") -> 4 */
-function countLetter(str, letter) {
+function countLetter(say, letter) {
   let counter = 0;
-  for (let i = 0; i < str.length; i++) {
-    if (str[i] === letter) {
+  let sayCase = say.toLowerCase().split("");
+  let letterCase = letter.toLowerCase();
+
+  for (let i = 0; i < sayCase.length; i++) {
+    if (sayCase[i] === letterCase) {
       counter++;
     }
   }
   return counter;
 }
 console.log(
-  "6. Cкільки разів певна буква повторюється в слові Асталавіста -",
-  countLetter("Асталавіста".toLowerCase(), "а")
+  "6. Cкільки разів певна буква повторюється в слові АстАалАвіста -",
+  countLetter("АстАалАвіста", "а")
 );
 
 /* 7. Створіть функцію, яка конвертує долари в гривні та навпаки в залежності від наявності символа $ або UAH в рядку. Приклад: convertCurrency("100$") -> 2500 грн. або convertCurrency "2500UAH") -> 100$
 8. Врахуйте, інші валюти не конвертуються, потрібно виводити помилку, і також регістр uah не має значення.
 */
 
-let exchange = prompt("Введите сумму обмена");
-let course = 25;
+//let exchange = prompt("Введите сумму обмена");
+//let course = 25;
 
 function currencyExchange() {
-  /*   if (
-    exchange[exchange.length - 1] !== "$" ||
-    exchange[exchange.length - 3] !== "uah"
-  ) {
-    console.log("Error");
-    return;
-  } */
+  let exchange = prompt("Введите сумму обмена").toUpperCase();
+  let course = 25;
+
+  if (!exchange) {
+    return "7. Значение не введено";
+  }
 
   if (exchange.includes("$")) {
     const moneyUSD = exchange.slice(0, exchange.length - 1);
     let currencyUSD = +moneyUSD * course;
-    console.log(
-      "7. У меня есть -",
-      moneyUSD + "$",
-      "Я получу -",
-      currencyUSD + "UAH"
+    return (
+      "7. У меня есть - " +
+      moneyUSD +
+      "$" +
+      ", " +
+      "Я получу - " +
+      currencyUSD +
+      "UAH"
     );
   }
 
-  if (exchange.includes("uah")) {
+  if (exchange.includes("UAH")) {
     const moneyUAH = exchange.slice(0, exchange.length - 3);
     let currencyUAH = +moneyUAH / course;
-    console.log(
-      "7. У меня есть -",
-      moneyUAH + "UAH",
-      "Я получу -",
-      currencyUAH + "$"
+    return (
+      "7. У меня есть - " +
+      moneyUAH +
+      "UAH" +
+      ", " +
+      "Я получу - " +
+      currencyUAH +
+      "$"
     );
+  } else {
+    return "7. Не верно введена валюта";
   }
 }
 console.log(currencyExchange());
@@ -116,14 +130,16 @@ console.log(currencyExchange());
 
 function getRandomPassword() {
   const chars = "0123456789";
-  const passwordLength = 7;
+  const passwordLength = prompt("Длина пароля");
+  //console.log(passwordLength);
   let password = "";
 
-  for (let i = 0; i <= passwordLength; i++) {
+  for (let i = 1; i <= passwordLength; i++) {
     const randomNumber = Math.floor(Math.random() * chars.length);
     password += chars.substring(randomNumber, randomNumber + 1);
   }
   return password;
+  //return "9. Случайный пароль ", password + " " + "количество символов", passwordLength;
 }
 console.log("9. Случайный пароль ", getRandomPassword());
 
@@ -162,8 +178,8 @@ console.log(
 );
 
 /*12. Створіть функцію, яка видалить з речення букви, які зустрічаються більше 1 разу. Приклад: deleteDuplicateLetter("Бісквіт був дуже ніжним") -> "сктдеим" */
-
-/* function deleteDuplicateLetter (
+/* 
+function deleteDuplicateLetter (
     text = "Бісквіт був дуже ніжним"){
 
         delDupplicate = "";
@@ -175,15 +191,23 @@ console.log(
         return false;
         }
     }
-    console.log("12. видалить з речення букви, які зустрічаються більше 1 разу = ", deleteDuplicateLetter()); */
-
-document.writeln(`Функція No1: ${getMaxDigit(number)}`);
-document.writeln(`Функція No2: ${calculeinDegree()}`);
-document.writeln(`Функція No3: ${upperlet()}`);
-document.writeln(`Функція No4: ${calculeinDegree()}`);
-document.writeln(`Функція No5: ${randInt()}`);
-document.writeln(`Функція No6: ${countLetter()}`);
-document.writeln(`Функція No8: ${currencyExchange()}`);
-document.writeln(`Функція No9: ${getRandomPassword()}`);
-document.writeln(`Функція No10: ${deleteLetters()}`);
-document.writeln(`Функція No11: ${isPalyndrom()}`);
+    console.log("12. видалить з речення букви, які зустрічаються більше 1 разу = ", deleteDuplicateLetter()); 
+ */
+document.writeln(`Функція No1: Найбільша цифра - ${getMaxDigit(number)}<br>`);
+document.writeln(`Функція No2: Cтупінь 4 числа 2 - ${calculeinDegree()}<br>`);
+document.writeln(`Функція No3: Перша буква імені велика ${upperlet()}<br>`);
+document.writeln(
+  `Функція No4: Cума, що залишається після оплати податку ${index}<br>`
+);
+document.writeln(`Функція No5: Випадкове ціле число, ${r}<br>`);
+document.writeln(
+  `Функція No6: Cкільки разів певна буква повторюється в слові АстАалАвіста - ${countLetter("АстАалАвіста", "а")}<br>`
+);
+document.writeln(`Функція No8: Конвертацыя валют ${currencyExchange()}<br>`);
+document.writeln(`Функція No9: Случайный пароль ${getRandomPassword()}<br>`);
+document.writeln(
+  `Функція No10: Видаляє всі букви 'a' з речення 'blablabla'  = ${deleteLetters()}<br>`
+);
+document.writeln(
+  `Функція No11: Створіть функцію, яка перевіряє, чи є слово паліндромом - ${isPalyndrom()}<br>`
+);
