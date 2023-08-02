@@ -35,7 +35,7 @@ const students = [{
 Зверніть увагу – назву предмету необхідно повертати з великої літери, а _ – замінити на пробіл */
 
 function getSubjects(students) {
-    const subjKey = Object.keys(students)
+    const subjKey = Object.keys(students.subjects)
     const newSubj = subjKey.map(subjKey => {
         return subjKey.charAt(0).toUpperCase() + subjKey.slice(1).replace("_", " ");});
 return newSubj;
@@ -79,24 +79,31 @@ return nameStudents.sort()
 console.log("4. Імена студентів у алфавітному порядку", getStudentsNames(students));
 
 /*5. Створіть функцію getBestStudent(students) --> "Anton" – яка повертає кращого студента зі списку по показнику середньої оцінки.*/
+/* function getBestStudent(students) {
+    let bestStudents = students[0];
+
+}
+
+console.log("5. Кращий студент", getBestStudent(students))  */
+
 
 function getBestStudent(students) { 
 let counter = 0;
-bestStudents = [];
-for(let i = 0; i < students.length; i++ ) {
-    if(getAverageMark(students[i]) > counter) {
-        counter = getAverageMark(students[i])
+let bestStudents = [];
+for(let i = 0; i < students.length; i++) {
+    if(counter < getAverageMark(students[i])) {
+       counter = getAverageMark(students[i])
     }
-
+}
 students.forEach((students) => {
     if(counter === getAverageMark(students)){
         bestStudents.push(students.name)
     }
 })
     return bestStudents
-}}
+}
 
-console.log("5. Кращий студент", getBestStudent(students))
+console.log("5. Кращий студент", getBestStudent(students)) 
 
 /* let number = 23597024;
 console.log("1. Будь-яке число -", number);
